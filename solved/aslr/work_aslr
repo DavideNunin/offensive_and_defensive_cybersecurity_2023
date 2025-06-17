@@ -1,0 +1,14 @@
+bss rwx
+
+first run:
+0x564b31800960 main address
+0x564b31a01080 ps1 address
+
+
+
+second run:
+0x561b77800960 main address
+0x561b77a01080
+
+
+offset:200720

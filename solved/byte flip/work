@@ -1,0 +1,14 @@
+mi fa mettere 3 byte in indirizzi che voglio io
+ASLR: serve un leak
+ma prima mi serve fare multistaging
+idee per fare multistaging:
+    leak dello stack
+    overwrite della got (è partial RelRo)
+    DONE
+stack leakato
+serve leak della libc
+posso far stampare a ogni giro il name in bss,
+problema: è globale
+non ho modo di sovrascrivere il puntatore
+forse si può usare la memcpy della welcome per qualche scopo particolare
+

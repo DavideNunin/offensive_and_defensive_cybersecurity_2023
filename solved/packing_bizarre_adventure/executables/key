@@ -1,0 +1,39 @@
+#! /usr/bin/python3
+
+
+
+# local_48 = 0xb4af73ec5b218a98  
+# local_40 = 0xcf45f265cbe548ef
+a = 0xcf45f265cbe548efb4af73ec5b218a98
+c = 0xef48e5cb65f245cf988a215bec73afb4
+# local_48 = 0x988a215bec73afb4;
+# local_40 = 0xef48e5cb65f245cf;
+
+b = 0x9c1791b3569c1abdd2c3128b2058baed 
+d = 0x9c1791b3569c1abdedba58208b12c3d2
+# local_28 = 0xed ba 58 20 8b 12 c3 d2;
+# local_20 = 0x9c 17 91 b3 56 9c 1a bd
+print(hex(a^b))
+print(hex(c^d))
+
+
+
+
+a2 = 0xa0e9997a1f26e55d
+b2 = 0xf997be04d7255ecb
+a2_big = 0x5de5261f7a99e9a0
+b2_big = 0xcb5e25d704be97f9
+c2 = 0x8e9aa8252c50896d
+d2 = 0x84e18d69e05c70e5
+c2_big = 0x6d89502c25a89a8e
+d2_big = 0x84e18d69e05c70e5
+print(hex(a2_big^b2_big))
+print(hex(c2_big^d2_big))
+print(hex(a2_big^c2_big))
+print(hex(b2_big^d2_big))
+
+
+first = 0xf997be04d7255ecba0e9997a1f26e55d
+second = 0x84e18d69e05c70e58e9aa8252c50896d
+print(hex(first^second))
+

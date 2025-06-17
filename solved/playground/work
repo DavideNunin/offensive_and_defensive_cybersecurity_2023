@@ -1,0 +1,8 @@
+sovrascrivere il valore id min_heap o max_heap tramite una free
+
+allocare roba
+effettuare tcache attack per allocare su minheap
+poi modificare la tcache co
+
+
+maxheap address: 0x55f6434f1090

